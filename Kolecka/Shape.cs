@@ -22,6 +22,7 @@ namespace Kolecka
 
         protected bool filled;
         public bool Filled { get => filled; set => filled = value; }
+        public CustomSize Size { get => size; set => size = value; }
 
         protected bool selected;
 
@@ -29,6 +30,8 @@ namespace Kolecka
         protected Pen colorPen;
 
         protected int centerSize = 15;
+
+        protected CustomSize size;
 
         public Shape(Point origin, Color color, bool filled)
         {
@@ -44,7 +47,7 @@ namespace Kolecka
         
         public abstract bool ContainsPoint(Point location, out float distance);
 
-        public abstract void ChangeSize(float size);
+        public abstract void ChangeSize(CustomSize size);
         public void Select(bool active)
         {
             this.selected = active;
@@ -56,19 +59,19 @@ namespace Kolecka
             colorPen = new Pen(color);
         }
 
-        public abstract float CalcSize(Point location);
+        public abstract CustomSize CalcSize(Point location, bool keepRatio = false);
 
         public void ChangeFill(bool filled)
         {
             this.filled = filled;
         }
 
-        internal void ChangeY(int value)
+        public void ChangeY(int value)
         {
             this.origin.Y = value;
         }
 
-        internal void ChangeX(int value)
+        public void ChangeX(int value)
         {
             this.origin.X = value;
         }

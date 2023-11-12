@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            comboBox1 = new ComboBox();
             checkBox2 = new CheckBox();
             button1 = new Button();
             checkBox1 = new CheckBox();
@@ -46,7 +47,7 @@
             rnum = new NumericUpDown();
             title = new Label();
             colorDialog2 = new ColorDialog();
-            comboBox1 = new ComboBox();
+            checkBox4 = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ynum).BeginInit();
@@ -57,6 +58,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(checkBox4);
             panel1.Controls.Add(comboBox1);
             panel1.Controls.Add(checkBox2);
             panel1.Controls.Add(button1);
@@ -65,6 +67,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1143, 75);
             panel1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(464, 27);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(433, 23);
+            comboBox1.TabIndex = 3;
             // 
             // checkBox2
             // 
@@ -230,13 +240,16 @@
             title.TabIndex = 0;
             title.Text = "Label1";
             // 
-            // comboBox1
+            // checkBox4
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(350, 27);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(503, 23);
-            comboBox1.TabIndex = 3;
+            checkBox4.AutoSize = true;
+            checkBox4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            checkBox4.Location = new Point(270, 21);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(132, 34);
+            checkBox4.TabIndex = 4;
+            checkBox4.Text = "Keep Ratio";
+            checkBox4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -280,5 +293,6 @@
         private Button button3;
         private ColorDialog colorDialog2;
         private ComboBox comboBox1;
+        private CheckBox checkBox4;
     }
 }

@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Kolecka
 {
-    public class Square : Shape
+    public abstract class Polygon : Shape
     {
-        public Square(Point center, Color color, bool filled) : base(center, color, filled)
+
+        protected List<Point> points = new List<Point>();
+
+        public Polygon(Point origin, Color color, bool filled) : base(origin, color, filled)
         {
-            size = new CustomSize(0, 0);
+            this.size = new CustomSize(0, 0);
         }
 
         public override CustomSize CalcSize(Point location, bool keepRatio)
@@ -22,7 +25,6 @@ namespace Kolecka
                 return xdiff > ydiff ? new CustomSize(xdiff) : new CustomSize(ydiff);
             }
 
-            
             return new CustomSize(xdiff, ydiff);
         }
 
@@ -34,26 +36,34 @@ namespace Kolecka
         public override bool ContainsPoint(Point location, out float distance)
         {
             distance = location.Distance(origin);
-            return location.X > origin.X ||
-                location.X < origin.X + size.Width ||
-                location.Y > origin.Y ||
-                location.Y < origin.Y + size.Height;
+            int count = 0;
+
+            for (int i = 0, j = points.Count - 1; i < points.Count; j = i++)
+            {
+                if ((points[i].Y > location.Y) != (points[j].Y > location.Y) &&
+                location.X < (points[j].X - points[i].X) * (location.Y - points[i].Y) / (points[j].Y - points[i].Y) + points[i].X)
+                {
+                    count++;
+                }
+            }
+            return count % 2 == 1;
+
         }
 
         public override void Draw(Graphics g, bool drawCenters)
         {
             if (filled)
             {
-                g.FillRectangle(colorBrush, origin.X, origin.Y,(int)size.Width, (int)size.Height);
+                g.FillPolygon(colorBrush, points.ToArray());
             }
             else
             {
-                g.DrawRectangle(colorPen, origin.X, origin.Y, (int)size.Width, (int)size.Height);
+                g.DrawPolygon(colorPen, points.ToArray());
             }
 
             if (selected)
             {
-                g.DrawRectangle(outlinePen, origin.X, origin.Y, (int)size.Width, (int)size.Height);
+                g.DrawPolygon(outlinePen, points.ToArray());
             }
             if (drawCenters)
             {
@@ -61,6 +71,9 @@ namespace Kolecka
                 g.DrawLine(centerPen, center.X - centerSize, center.Y, center.X + centerSize, center.Y);
                 g.DrawLine(centerPen, center.X, center.Y - centerSize, center.X, center.Y + centerSize);
             }
+
+            this.points.Clear();
         }
+
     }
 }

@@ -76,7 +76,8 @@ namespace Kolecka
                     canvas1.Refresh();
                     return;
                 }
-                currentShape.ChangeSize(currentShape.CalcSize(e.Location));
+
+                currentShape.ChangeSize(currentShape.CalcSize(e.Location, checkBox4.Checked));
                 Refresh();
             }
         }
@@ -112,8 +113,8 @@ namespace Kolecka
 
         private void rnum_ValueChanged(object sender, EventArgs e)
         {
-            canvas1.SelectedShape?.ChangeSize((float)rnum.Value);
-            canvas1.Refresh();
+            //canvas1.SelectedShape?.ChangeSize((float)rnum.Value);
+            //canvas1.Refresh();
         }
 
         private void xnum_ValueChanged(object sender, EventArgs e)
@@ -150,6 +151,6 @@ namespace Kolecka
             canvas1.DrawCenters = checkBox2.Checked;
         }
 
-        
+
     }
 }

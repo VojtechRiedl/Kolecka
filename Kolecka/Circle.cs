@@ -42,9 +42,9 @@ namespace Kolecka
             }
         }
 
-        public override void ChangeSize(float radius)
+        public override void ChangeSize(CustomSize size)
         {
-            this.radius = radius;
+            this.radius = size.Width;
         }
 
         public override bool ContainsPoint(Point location, out float distance)
@@ -53,17 +53,10 @@ namespace Kolecka
             return distance < radius;
         }
 
-        public void Edit(float radius, int x, int y, Color backColor, bool fill)
-        {
-            this.radius = radius;
-            this.origin = new Point(x, y);
-            this.color = backColor;
-            this.filled = fill;
-        }
 
-        public override float CalcSize(Point location)
+        public override CustomSize CalcSize(Point location, bool keepRatio = true)
         {
-            return location.Distance(origin);
+            return new CustomSize(location.Distance(origin));
         }
     }
 }
