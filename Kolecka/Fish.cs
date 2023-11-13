@@ -14,6 +14,7 @@ namespace Kolecka
 
         public override void Draw(Graphics g, bool drawCenters)
         {
+            this.points.Clear();
             this.points.Add(new Point(origin.X,(int)( origin.Y + size.Height / 2)));
             this.points.Add(new Point((int)(origin.X + size.Width / 3),origin.Y));
             this.points.Add(new Point((int)(origin.X + size.Width),(int)( origin.Y + size.Height *  2 / 3)));

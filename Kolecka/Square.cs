@@ -34,9 +34,9 @@ namespace Kolecka
         public override bool ContainsPoint(Point location, out float distance)
         {
             distance = location.Distance(origin);
-            return location.X > origin.X ||
-                location.X < origin.X + size.Width ||
-                location.Y > origin.Y ||
+            return location.X > origin.X &&
+                location.X < origin.X + size.Width &&
+                location.Y > origin.Y &&
                 location.Y < origin.Y + size.Height;
         }
 

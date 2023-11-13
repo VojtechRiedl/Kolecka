@@ -15,16 +15,26 @@ namespace Kolecka
 
         public override void Draw(Graphics g, bool drawCenters)
         {
+            this.points.Clear();
+
+            this.points.Add(new Point((int)(origin.X + size.Width / 2), origin.Y));
+            this.points.Add(new Point((int)(origin.X + size.Width), (int)(origin.Y + size.Height)));
+            this.points.Add(new Point((int)(origin.X + size.Width / 3), (int)(origin.Y + size.Height * 8 / 9)));
+            this.points.Add(new Point((int)(origin.X + size.Width * 2 / 3), (int)(origin.Y + size.Height * 8 / 9)));
+            this.points.Add(new Point(origin.X, (int)(origin.Y + size.Height)));
+
+
+
+
+            /*
+
             this.points.Add(new Point((int)(origin.X - size.Width * 0.4), (int)(origin.Y + size.Height * 0.1)));
             this.points.Add(new Point(origin.X, (int)(origin.Y - size.Height * 0.5)));
             this.points.Add(new Point((int)(origin.X + size.Width * 0.4), (int)(origin.Y + size.Height * 0.1)));
             this.points.Add(new Point((int)(origin.X - size.Width * 0.2), origin.Y));
             this.points.Add(new Point((int)(origin.X + size.Width * 0.2), origin.Y));
             this.points.Add(new Point((int)(origin.X - size.Width * 0.4), (int)(origin.Y + size.Height * 0.1)));
-
-
-
-
+            */
             base.Draw(g, drawCenters);
         }
     }

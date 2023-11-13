@@ -72,7 +72,6 @@ namespace Kolecka
                 g.DrawLine(centerPen, center.X, center.Y - centerSize, center.X, center.Y + centerSize);
             }
 
-            this.points.Clear();
         }
 
     }

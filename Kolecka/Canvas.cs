@@ -49,22 +49,22 @@ namespace Kolecka
             {
 
                 float closestCenter = float.MaxValue;
-                Shape closestCircle = null;
+                Shape closestShape = null;
                 float currentDistance;
 
-                foreach (var circle in shapes)
+                foreach (var shape in shapes)
                 {
-                    if (circle.ContainsPoint(e.Location, out currentDistance))
+                    if (shape.ContainsPoint(e.Location, out currentDistance))
                     {
                         if (currentDistance < closestCenter)
                         {
-                            closestCircle = circle;
+                            closestShape = shape;
                             closestCenter = currentDistance;
                         }
                     }
                 }
 
-                SelectShape(closestCircle);
+                SelectShape(closestShape);
             }
         }
 
